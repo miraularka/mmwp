@@ -1,0 +1,115 @@
+body {
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	background: #D2D2D2;
+	background-image: url("/img/bg_sky_cloud.png");
+	background-size: 100% auto;
+}
+
+.back {
+	background: #222222;
+	background-image: url("/img/bg_hex60p.png");
+	background-size: cover;
+}
+
+.main-column {
+	background: #525252;
+	min-height:100vh;
+	left: 0;
+	top: 0;
+	position: relative;
+	padding: 0;
+	z-index: 1;
+}
+
+.top-panel {
+	background-image: linear-gradient(45deg, #777777 0%, #777777 2%, #4C4C4C 2%, #4C4C4C 4%, #777777 4%, #777777 6%, #4C4C4C 6%, #4C4C4C 8%, #777777 8%, #777777 10%, #4C4C4C 10%, #4C4C4C 12%, #777777 12%);
+}
+
+.hostname {
+	color: #14D4D4;
+	font-family: sans-serif;
+	background: #1CB0F6;
+	border: 2px solid #1CB0F6;
+	border-radius: 8px;
+	padding: 1px;
+}
+
+.logo {
+	background-image: url("/img/logo.png");
+	background-size: cover;
+	height: 2em;
+	width: 2em;
+	padding: 0;
+	margin: 0;
+	position: relative;
+	float: left;
+	opacity: 0.8;
+}
+
+
+.keychain {
+	position: relative;
+	padding: 0;
+	top: -32px;
+	left: 6px;
+	float: left;
+	z-index: -1;
+	filter: drop-shadow(5px 3px 1px rgba(0, 0, 0, .2));
+	-webkit-transform-origin: 50% 5px;
+	transform-origin: 50% 5px;
+	-webkit-animation: drop 1.2s ease-in-out 1 forwards, swing 2s ease-in-out 1.2s infinite forwards;
+	animation: drop 1.2s ease-in-out 1 forwards, swing 2s ease-in-out 1.2s infinite forwards;
+}
+
+.keychain-key {
+	position: relative;
+	padding: 0;
+	top: -8px;
+	left: -5px;
+	z-index: 0;
+	filter: drop-shadow(5px 3px 1px rgba(0, 0, 0, .2));
+	-webkit-transform-origin: 50% 0px;
+	transform-origin: 50% 0px;
+	-webkit-animation: drop 1.4s ease-in-out 1 forwards, swing 2s ease-in-out 1.4s infinite forwards;
+	animation: drop 1.4s ease-in-out 1 forwards, swing 2s ease-in-out 1.4s infinite forwards;
+}
+
+@keyframes drop {
+  1% { transform: rotate(30deg); }
+  20% { transform: rotate(-5deg); }
+  35% { transform: rotate(2deg); }
+  50% { transform: rotate(-1deg); }
+  100% { transform: rotate(1deg); }
+}
+
+@-webkit-keyframes drop {
+  1%{-webkit-transform: rotate(30deg);}
+  20%{-webkit-transform: rotate(-5deg);}
+  35%{-webkit-transform: rotate(2deg);}
+  50%{-webkit-transform: roate(-1deg);}
+  100%{-webkit-transform: rotate(1deg);}
+}
+
+@keyframes swing {
+  1% { transform: rotate(1deg); }
+  50% { transform: rotate(-1deg); }
+  100% { transform: rotate(1deg); }
+}
+
+@-webkit-keyframes swing{
+    1%{-webkit-transform: rotate(1deg);}
+    50%{-webkit-transform: rotate(-1deg);}
+    100%{-webkit-transform: rotate(1deg);}
+}
+
+#particles-js {
+	width: 100%;
+	height: 100vh;
+	background: #636363;
+}
+
+canvas{
+  display:block;
+}
