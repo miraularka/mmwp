@@ -44,8 +44,8 @@ if ($_SESSION['logged'] === TRUE) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $page_title; ?></title>
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script src="/js/bootstrap.js"></script>
     <script src="/js/bootstrap.bundle.min.js"></script>
@@ -58,6 +58,7 @@ if ($_SESSION['logged'] === TRUE) {
 </script>
   </head>
   <body>
+  <div class="back">
 	<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-3 top-panel">
     		<div class="container-fluid">
         		<a href="#" class="navbar-brand mr-3"><div class="logo d-none d-md-block mr-3"></div><span style="color:#F2F2F2">LarkaNet Primer</span></a>
@@ -89,6 +90,7 @@ if ($_SESSION['logged'] === TRUE) {
         		</div>
     		</div>    
 	</nav>
+	
 	<div class="keychain swing d-none d-md-block"><img src="/img/keychaintest.png"><div class="keychain-key swing d-none d-md-block"><img src="/img/jonib.png" style="height:48px;"></div></div>
 	<div class="container">
 <?php
