@@ -190,7 +190,9 @@ if($page == 6) {
 	 flair TEXT NULL,
      PRIMARY KEY (id))";
 		$mysqli->query($sql);
-		$sql = "INSERT INTO mmwp (name, nick, uid, secret) VALUES ('admin', 'Test Admin', '1337', '".hash(sha256, 'test')."')";
+		sleep(2);
+		$pas = hash(sha256, 'test');
+		$sql = "INSERT INTO mmwp (name, nick, uid, secret) VALUES ('admin', 'Test Admin', '1337', '".$pas."')";
 		$mysqli->query($sql);
 	echo "<h1>Installation Complete</h1><p>Table successfully built. Test account 'admin' with password 'test' has been created as well. The website backend is setup. The only remaining thing to do is to configure the Mirau-bot! You should rename or delete this file as soon as possible for safety. Enjoy using MMWP!</p>";
 }
