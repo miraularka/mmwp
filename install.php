@@ -140,13 +140,13 @@ if($page == 5) {
 	$sql = "SELECT uid FROM user";
 	$result = $mysqli->query($sql);
 	$exists = FALSE;
-	foreach($result as $e){
+	if($result){
 		$exists = TRUE;	
 	}
 	if($exists === FALSE){
-		echo "Table space allocated and ready to be built. Test account 'admin' with password 'test' created as well.";
+		echo "Table space allocated and ready to be built. Test account 'admin' with password 'test' will be created.";
 	} else {
-		echo "Table already exists! To continue allocating required space, the current mmwp table will be deleted - including all stored data. Test account 'admin' with password 'test' will be created as well.";
+		echo "Table already exists! To continue allocating required space, the current mmwp table will be deleted - including all stored data. Test account 'admin' with password 'test' will be created.";
 	}	
 	echo "
 		<form action=\"#\" method=post style=\"text-align:center;\">
@@ -157,6 +157,7 @@ if($page == 5) {
 		<input type=\"hidden\" class=\"form-control\" id=\"dbpwd\" name=\"dbpwd\" value=".$dbpwd." >
 		<input type=\"hidden\" id=\"page\" name=\"page\" value=6>
 		<input type=\"hidden\" id=\"complete\" name=\"complete\" value=10><hr>
+		<input type=\"password\" class=\"form-control\" id=\"adminpwd\" name=\"adminpwd\" placeholder=\"Admin Password\" required>
 		<button type=\"submit\" class=\"btn btn-success btn-lg \" >- Next -</button>
 		</form>
 		<hr>
@@ -168,6 +169,7 @@ if($page == 6) {
 	$dbusr = $_POST['dbusr'];
 	$dbpwd = $_POST['dbpwd'];
 	$dbnom = $_POST['dbnom'];
+	$adminpwd = $_POST['adminpwd'];
 	$mysqli = new mysqli($dbadd, $dbusr, $dbpwd, $dbnom);
 	if($exists === TRUE){
 		$sql = "DROP TABLE user";
@@ -190,8 +192,8 @@ if($page == 6) {
 	 flair TEXT NULL,
      PRIMARY KEY (id))";
 		$mysqli->query($sql);
-		sleep(2);
-		$sql = "INSERT INTO user (name, nick, uid, secret) VALUES ('admin', 'Test Admin', '1337', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08')";
+		$adminpwdh = hash('sha256', $adminpwd);
+		$sql = "INSERT INTO user (name, nick, uid, secret, power) VALUES ('admin', 'Test Admin', '1337', '".$adminpwdh."', 4)";
 		$mysqli->query($sql);
 		/* Make sure we save the database connection info */
 		$settingsfile = fopen('config/settings.conf', 'w'); 
@@ -202,7 +204,7 @@ if($page == 6) {
 		fclose($settingsfile);
 		
 		
-	echo "<h1>Installation Complete</h1><p>Table successfully built. Test account 'admin' with password 'test' created. Settings configuration file created and populated. The website backend is setup. The only remaining thing to do is to configure the Mirau-bot! You should rename or delete this file as soon as possible for safety. Enjoy using MMWP!</p>";
+	echo "<h1>Installation Complete</h1><p>Table successfully built. Test account 'admin' created. Settings configuration file created and populated. The website backend is setup. The only remaining thing to do is to configure the Mirau-bot! You should rename or delete this file as soon as possible for safety. Enjoy using MMWP!</p>";
 }
 
 ?>
