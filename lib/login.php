@@ -15,7 +15,8 @@ $result = $mysqli->query($sql);
 echo "phase 3 complete</br>";
 foreach ($result as $rows){
 	echo "phase 3.1 complete</br>";
-	if($rows['secret'] === hash(sha256, $pwd)) {
+	echo "User is: ".$usr." and Pwd: ".$pwd."</br>";
+	if($rows['secret'] == hash(sha256, $pwd)) {
 			echo "phase 3.2 compelte</br>";
 			$alert['type'] = "success";
 			$alert['msg'] = "Logged in as <strong>".$rows['name']." (".$rows['nick'].") successfully!";
