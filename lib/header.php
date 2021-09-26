@@ -14,7 +14,6 @@ $alert = [
 
 if(isset($_POST['log'])){
 	if ($_POST['log']){
-		echo "requiring login";
 		require "lib/login.php";
 	}}
 if(isset($_POST['out'])){
