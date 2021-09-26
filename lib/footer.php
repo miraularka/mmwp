@@ -25,13 +25,14 @@
   <script type="text/javascript" src="/js/particles.js"></script>
   <script type="text/javascript" src="/js/app.js"></script>
   <script src="/js/main.js"></script>
-  </div>
-  	<ul class="bubbles">
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-	</ul>
+	</div>
+	<div class="particle">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
   </body>
 </html>

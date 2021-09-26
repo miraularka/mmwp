@@ -9,11 +9,11 @@ body {
 .back {
 	width: 100%;
 	height: 400vh;
-	position: relative;
+	position: absolute;
 	background-image: linear-gradient(-45deg, #6e6b5e, #5e6b6e, #6e5e6d);
 	background-size: 400% 400%;
 	animation: bgchange 10s ease-in-out infinite;
-	z-index: -10;
+	z-index: 0;
 }
 
 @keyframes bgchange { 
@@ -29,11 +29,11 @@ body {
 	top: 0;
 	position: relative;
 	padding: 0;
-	z-index: 1;
+	z-index: 2;
 }
 
 .top-panel {
-	background-image: linear-gradient(45deg, #777777 0%, #777777 2%, #4C4C4C 2%, #4C4C4C 4%, #777777 4%, #777777 6%, #4C4C4C 6%, #4C4C4C 8%, #777777 8%, #777777 10%, #4C4C4C 10%, #4C4C4C 12%, #777777 12%);
+	background: rgba(0,0,0,0.4);
 }
 
 .hostname {
@@ -119,36 +119,29 @@ body {
 	background: #636363;
 }
 
-.bubbles {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
 
-.bubbles li {
+.particle div {
 	position: absolute;
-	list-style: none;
-	display: block;
-	bottom: -10vh;
+	bottom: -35px;
 	width: 20px;
 	height: 20px;
+	opacity: 0.2;
 	border: 0px solid black;
 	border-radius: 50%;
 	background: rgba(1, 1, 1, 0.6);
-	animation: float 10s linear infinite;
-	z-index: 0;
+	animation: float 7s linear infinite;
+	z-index: 1;
 }
 
-.bubbles li:nth-child(1) {
+.particle div:nth-child(1) {
 		left: 10%;
 		width: 10px;
 		height: 10px;
 		animation-delay: 1.4s;
+		animation-duration: 4s;
 }
 
-.bubbles li:nth-child(2) {
+.particle div:nth-child(2) {
 		left: 60%;
 		width: 35px;
 		height: 35px;
@@ -156,14 +149,15 @@ body {
 		animation-duration: 8s;
 }
 
-.bubbles li:nth-child(3) {
+.particle div:nth-child(3) {	
 		left: 90%;
 		width: 20px;
 		height: 20px;
 		animation-delay: 0s;
+		animation-duration: 4s;
 }
 
-.bubbles li:nth-child(4) {
+.particle div:nth-child(4) {	
 		left: 18%;
 		width: 26px;
 		height: 26px;
@@ -171,7 +165,7 @@ body {
 		animation-duration: 7.2s;
 }
 
-.bubbles li:nth-child(5) {
+.particle div:nth-child(5) {		
 		left: 51%;
 		width: 8px;
 		height: 8px;
@@ -179,7 +173,7 @@ body {
 		animation-duration: 12s;
 }
 
-.bubbles li:nth-child(6) {
+.particle div:nth-child(6) {
 		left: 38%;
 		width: 21px;
 		height: 21px;
@@ -188,14 +182,7 @@ body {
 
 @keyframes float {
 0% { 
-	opacity: 1;
 	transform: translateY(0);
-	}
-20% {
-	transform: translateX(20vw);
-	}
-50% {
-	transform: translateX(-20vw);
 	}
 100% {
 	opacity: 0;

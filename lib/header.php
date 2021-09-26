@@ -59,7 +59,7 @@ if ($_SESSION['logged'] === TRUE) {
   </head>
   <body>
   <div class="back">
-	<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-3 top-panel">
+	<nav class="navbar navbar-expand-md navbar-dark mb-3 top-panel">
     		<div class="container-fluid">
         		<a href="#" class="navbar-brand mr-3"><div class="logo d-none d-md-block mr-3"></div><span style="color:#F2F2F2">LarkaNet Primer</span></a>
         		<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
