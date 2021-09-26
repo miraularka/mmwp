@@ -194,15 +194,15 @@ if($page == 6) {
 		$sql = "INSERT INTO user (name, nick, uid, secret) VALUES ('admin', 'Test Admin', '1337', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08')";
 		$mysqli->query($sql);
 		/* Make sure we save the database connection info */
-		$settingsfile = fopen('config/settings.conf', 'a'); 
-		fwrite ($settingsfile, "address ".$dbadd.PHP_EOL);
-		fwrite ($settingsfile, "user ".$dbusr.PHP_EOL);
-		fwrite ($settingsfile, "pass ".$dbpwd.PHP_EOL);
-		fwrite ($settingsfile, "name ".$dbnom);
+		$settingsfile = fopen('config/settings.conf', 'w'); 
+		fwrite ($settingsfile, $dbadd.PHP_EOL);
+		fwrite ($settingsfile, $dbusr.PHP_EOL);
+		fwrite ($settingsfile, $dbpwd.PHP_EOL);
+		fwrite ($settingsfile, $dbnom);
 		fclose($settingsfile);
 		
 		
-	echo "<h1>Installation Complete</h1><p>Table successfully built. Test account 'admin' with password 'test' has been created as well. The website backend is setup. The only remaining thing to do is to configure the Mirau-bot! You should rename or delete this file as soon as possible for safety. Enjoy using MMWP!</p>";
+	echo "<h1>Installation Complete</h1><p>Table successfully built. Test account 'admin' with password 'test' created. Settings configuration file created and populated. The website backend is setup. The only remaining thing to do is to configure the Mirau-bot! You should rename or delete this file as soon as possible for safety. Enjoy using MMWP!</p>";
 }
 
 ?>

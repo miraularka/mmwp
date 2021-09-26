@@ -5,46 +5,26 @@
 	
 */
 
-require "lib/mysql.php";
-
 $usr = $_POST['usr'] ?? 'none';
 $pwd = $_POST['pwd'] ?? 'none';
-echo "check 1 passed";
-$sql = "SELECT name FROM user ORDER BY id ASC";
-
-$result = $mysqli->query($sql);
+$sql = "SELECT * FROM `user` WHERE name='".$usr."'";
+require 'lib/mysql.php';
 $valid = FALSE;
-foreach ($result as $row) {
-	if ($row['name'] == $usr){
-		$valid = TRUE;
+$result = $mysqli->query($sql);
+foreach ($result as $rows){
+	if($rows['secret'] === hash(sha256, $pwd)) {
+			$alert['type'] = "success";
+			$alert['msg'] = "Logged in as <strong>".$rows['name']." (".$rows['nick'].") successfully!";
+			$_SESSION['id'] = $rows['id'];
+			$_SESSION['uid'] = $rows['uid'];
+			$_SESSION['name'] = $rows['name'];
+			$_SESSION['nick'] = $rows['nick'];
+			$_SESSION['power'] = $rows['power'];
+			$_SESSION['color'] = $rows['color'];
+			$_SESSION['keyc'] = $rows['keyc'];
+			$_SESSION['logged'] = TRUE;
+			$valid = TRUE;
 	}
-}
-echo "check 2 passed";
-if ($valid === TRUE){
-	$sql = "SELECT secret FROM user WHERE name='".$usr."'";
-	$result = $mysqli->query($sql);
-	echo "check 3 passed";
-	foreach ($result as $row) {
-		if($row['secret'] === hash(sha256, $pwd)) {
-				echo "check 4 passed";
-				$sql = "SELECT * FROM user WHERE name='".$usr."'";
-				$info = $mysqli->query($sql);
-				foreach ($info as $user) {
-					$alert['type'] = "success";
-					$alert['msg'] = "Logged in as <strong>".$user['name']." (".$user['nick'].") successfully!";
-					$_SESSION['id'] = $user['id'];
-					$_SESSION['uid'] = $user['uid'];
-					$_SESSION['name'] = $user['name'];
-					$_SESSION['nick'] = $user['nick'];
-					$_SESSION['power'] = $user['power'];
-					$_SESSION['color'] = $user['color'];
-					$_SESSION['keyc'] = $user['keyc'];
-					$_SESSION['logged'] = TRUE;
-				}
-		} else {
-				$valid = FALSE;
-		}
-	}	
 }
 
 if ($valid === FALSE){
