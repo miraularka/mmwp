@@ -5,8 +5,8 @@
 	
 */
 
-require "config/settings.php";
-require "lib/functions.php";
+include "config/settings.php";
+include "lib/functions.php";
 
 $usr = $_POST['usr'];
 $pwd = $_POST['pwd'];
