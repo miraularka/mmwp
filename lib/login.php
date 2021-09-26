@@ -4,11 +4,12 @@
 	Login schema for Mirau's Modular Website Platform
 	
 */
-
+echo "phase 1 complete</br>";
 $usr = $_POST['usr'] ?? 'none';
 $pwd = $_POST['pwd'] ?? 'none';
 $sql = "SELECT * FROM `user` WHERE name='".$usr."'";
-require 'lib/mysql.php';
+echo "phase 2 complete</br>";
+require "lib/mysql.php";
 $valid = FALSE;
 $result = $mysqli->query($sql);
 foreach ($result as $rows){

@@ -13,6 +13,7 @@ $alert = [
 		];
 
 if ($_POST['log']){
+	echo "requiring login";
 	require "lib/login.php";
 }
 if ($_POST['out']){
