@@ -12,8 +12,11 @@ echo "phase 2 complete</br>";
 require "lib/mysql.php";
 $valid = FALSE;
 $result = $mysqli->query($sql);
+echo "phase 3 complete</br>";
 foreach ($result as $rows){
+	echo "phase 3.1 complete</br>";
 	if($rows['secret'] === hash(sha256, $pwd)) {
+			echo "phase 3.2 compelte</br>";
 			$alert['type'] = "success";
 			$alert['msg'] = "Logged in as <strong>".$rows['name']." (".$rows['nick'].") successfully!";
 			$_SESSION['id'] = $rows['id'];
@@ -27,7 +30,7 @@ foreach ($result as $rows){
 			$valid = TRUE;
 	}
 }
-
+echo "phase 4 complete</br>";
 if ($valid === FALSE){
 	$alert['type'] = "danger";
 	$alert['msg'] = "Account name or password are invalid.";
