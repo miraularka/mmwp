@@ -5,10 +5,13 @@
 	
 */
 
+require "lib/mysql.php";
+
 $usr = $_POST['usr'] ?? 'none';
 $pwd = $_POST['pwd'] ?? 'none';
 echo "check 1 passed";
 $sql = "SELECT name FROM user ORDER BY id ASC";
+
 $result = $mysqli->query($sql);
 $valid = FALSE;
 foreach ($result as $row) {
