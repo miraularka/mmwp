@@ -71,14 +71,14 @@ if (isset($_SESSION['logged']) && $_SESSION['logged'] === TRUE) {
         		<div class="collapse navbar-collapse" id="navbarCollapse">
             			<div class="navbar-nav">
 							<?php 
-							if ($_SESSION['logged'] === TRUE) { echo "<a href=\"#\" class=\"nav-item nav-link\">Profile</a>";} ?>
+							if (isset($_SESSION['logged']) && $_SESSION['logged'] === TRUE) { echo "<a href=\"#\" class=\"nav-item nav-link\">Profile</a>";} ?>
 							<a href="#" class="nav-item nav-link">News</a>
                 			<a href="#" class="nav-item nav-link">Servers</a>
                 			<a href="#" class="nav-item nav-link">Discord</a>
             			</div>
             			<div class="navbar-nav ml-auto">
 						<?php
-						if ($_SESSION['logged'] === TRUE) {
+						if (isset($_SESSION['logged']) && $_SESSION['logged'] === TRUE) {
 							echo "<form action=\"#\" method=post><div class=\"row align-items-center g-3\"><div class=\"col-auto\">
 								<input type=\"hidden\" id=\"out\" name=\"out\" value=TRUE><button type=\"submit\" class=\"btn btn-primary\" >
 								Logout</button></div></div></form>";
