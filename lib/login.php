@@ -11,7 +11,7 @@ require "lib/functions.php";
 $usr = $_POST['usr'];
 $pwd = $_POST['pwd'];
 
-$sql = "SELECT name FROM mmwp ORDER BY id ASC";
+$sql = "SELECT name FROM user ORDER BY id ASC";
 $result = $mysqli->query($sql);
 $valid = FALSE;
 foreach ($result as $row) {
@@ -21,11 +21,11 @@ foreach ($result as $row) {
 }
 
 if ($valid === TRUE){
-	$sql = "SELECT secret FROM mmwp WHERE name='".$usr."'";
+	$sql = "SELECT secret FROM user WHERE name='".$usr."'";
 	$result = $mysqli->query($sql);
 	foreach ($result as $row) {
 		if($row['secret'] === hash(sha256, $pwd)) {
-				$sql = "SELECT * FROM mmwp WHERE name='".$usr."'";
+				$sql = "SELECT * FROM user WHERE name='".$usr."'";
 				$info = $mysqli->query($sql);
 				foreach ($info as $user) {
 					$alert['type'] = "success";

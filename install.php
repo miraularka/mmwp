@@ -137,7 +137,7 @@ if($page == 5) {
 	$dbpwd = $_POST['dbpwd'];
 	$dbnom = $_POST['dbnom'];
 	$mysqli = new mysqli($dbadd, $dbusr, $dbpwd, $dbnom);
-	$sql = "SELECT uid FROM mmwp";
+	$sql = "SELECT uid FROM user";
 	$result = $mysqli->query($sql);
 	$exists = FALSE;
 	foreach($result as $e){
@@ -170,10 +170,10 @@ if($page == 6) {
 	$dbnom = $_POST['dbnom'];
 	$mysqli = new mysqli($dbadd, $dbusr, $dbpwd, $dbnom);
 	if($exists === TRUE){
-		$sql = "DROP TABLE mmwp";
+		$sql = "DROP TABLE user";
 		$mysqli->query($sql);
 	}
-	$sql = "CREATE TABLE mmwp (
+	$sql = "CREATE TABLE user (
      id INT NOT NULL AUTO_INCREMENT,
      name TEXT NOT NULL,
 	 uid TEXT NOT NULL,
@@ -191,8 +191,7 @@ if($page == 6) {
      PRIMARY KEY (id))";
 		$mysqli->query($sql);
 		sleep(2);
-		$pas = hash(sha256, 'test');
-		$sql = "INSERT INTO mmwp (name, nick, uid, secret) VALUES ('admin', 'Test Admin', '1337', '".$pas."')";
+		$sql = "INSERT INTO user (name, nick, uid, secret) VALUES ('admin', 'Test Admin', '1337', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08')";
 		$mysqli->query($sql);
 	echo "<h1>Installation Complete</h1><p>Table successfully built. Test account 'admin' with password 'test' has been created as well. The website backend is setup. The only remaining thing to do is to configure the Mirau-bot! You should rename or delete this file as soon as possible for safety. Enjoy using MMWP!</p>";
 }
