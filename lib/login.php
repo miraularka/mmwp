@@ -4,23 +4,15 @@
 	Login schema for Mirau's Modular Website Platform
 	
 */
-echo "phase 1 complete</br>";
+
 $usr = $_POST['usr'] ?? 'none';
 $pwd = $_POST['pwd'] ?? 'none';
 $sql = "SELECT * FROM `user` WHERE name='".$usr."'";
-echo "phase 2 complete</br>";
 require "lib/mysql.php";
 $valid = FALSE;
 $result = $mysqli->query($sql);
-echo "phase 3 complete</br>";
 foreach ($result as $rows){
-	echo "phase 3.1 complete</br>";
-	echo "User is: ".$usr." and Pwd: ".$pwd."</br>";
-	echo var_dump($rows)."</br>";
-	echo hash(sha256, $pwd, false)."</br>";
-	echo $rows['secret']."</br>";
-	if($rows['secret'] == hash(sha256, $pwd)) {
-			echo "phase 3.2 compelte</br>";
+	if($rows['secret'] == hash('sha256', $pwd)) {
 			$alert['type'] = "success";
 			$alert['msg'] = "Logged in as <strong>".$rows['name']." (".$rows['nick'].") successfully!";
 			$_SESSION['id'] = $rows['id'];
@@ -34,7 +26,7 @@ foreach ($result as $rows){
 			$valid = TRUE;
 	}
 }
-echo "phase 4 complete</br>";
+
 if ($valid === FALSE){
 	$alert['type'] = "danger";
 	$alert['msg'] = "Account name or password are invalid.";

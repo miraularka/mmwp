@@ -12,19 +12,21 @@ $alert = [
 		'msg' => NULL
 		];
 
-if ($_POST['log']){
-	echo "requiring login";
-	require "lib/login.php";
-}
-if ($_POST['out']){
-	session_unset();
-	$alert['type'] = "info";
-	$alert['msg'] = "Successfully logged out.";
-}
+if(isset($_POST['log'])){
+	if ($_POST['log']){
+		echo "requiring login";
+		require "lib/login.php";
+	}}
+if(isset($_POST['out'])){
+	if ($_POST['out']){
+		session_unset();
+		$alert['type'] = "info";
+		$alert['msg'] = "Successfully logged out.";
+}}
 
 $page_title = "LarkaNet Test Environ";
 
-if ($_SESSION['logged'] === TRUE) {
+if (isset($_SESSION['logged']) && $_SESSION['logged'] === TRUE) {
 	$user = [
 		'id' => $_SESSION['id'],
 		'uid' => $_SESSION['uid'],	
