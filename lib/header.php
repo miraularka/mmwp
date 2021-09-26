@@ -13,7 +13,7 @@ $alert = [
 		];
 
 if ($_POST['log']){
-	include "lib/login.php";
+	require "lib/login.php";
 }
 if ($_POST['out']){
 	session_unset();

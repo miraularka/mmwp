@@ -5,12 +5,9 @@
 	
 */
 
-include "config/settings.php";
-include "lib/functions.php";
-
-$usr = $_POST['usr'];
-$pwd = $_POST['pwd'];
-
+$usr = $_POST['usr'] ?? 'none';
+$pwd = $_POST['pwd'] ?? 'none';
+echo "check 1 passed";
 $sql = "SELECT name FROM user ORDER BY id ASC";
 $result = $mysqli->query($sql);
 $valid = FALSE;
@@ -19,12 +16,14 @@ foreach ($result as $row) {
 		$valid = TRUE;
 	}
 }
-
+echo "check 2 passed";
 if ($valid === TRUE){
 	$sql = "SELECT secret FROM user WHERE name='".$usr."'";
 	$result = $mysqli->query($sql);
+	echo "check 3 passed";
 	foreach ($result as $row) {
 		if($row['secret'] === hash(sha256, $pwd)) {
+				echo "check 4 passed";
 				$sql = "SELECT * FROM user WHERE name='".$usr."'";
 				$info = $mysqli->query($sql);
 				foreach ($info as $user) {
