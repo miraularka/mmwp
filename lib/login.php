@@ -17,6 +17,8 @@ foreach ($result as $rows){
 	echo "phase 3.1 complete</br>";
 	echo "User is: ".$usr." and Pwd: ".$pwd."</br>";
 	echo var_dump($rows)."</br>";
+	echo hash(sha256, $pwd)."</br>";
+	echo $rows['secret']."</br>";
 	if($rows['secret'] == hash(sha256, $pwd)) {
 			echo "phase 3.2 compelte</br>";
 			$alert['type'] = "success";
