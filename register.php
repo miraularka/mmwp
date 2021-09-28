@@ -7,7 +7,7 @@
 require 'lib/header.php';
 $check = TRUE;
 
-if($_SESSION['logged'] === TRUE){
+if(isset($_SESSION['logged']) && $_SESSION['logged'] === TRUE){
 	echo "<div class=\"alert alert-warning alert-dismissible fade show\">You can not register a new account while already logged into another account. Please logout of this account and try again.</div>";
 	$check = FALSE;
 } elseif (!isset($_GET['usr'])) {
