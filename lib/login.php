@@ -11,19 +11,21 @@ $sql = "SELECT * FROM `user` WHERE name='".$usr."'";
 require "lib/mysql.php";
 $valid = FALSE;
 $result = $mysqli->query($sql);
-foreach ($result as $rows){
-	if($rows['secret'] == hash('sha256', $pwd)) {
-			$alert['type'] = "success";
-			$alert['msg'] = "Logged in as <strong>".$rows['name']." (".$rows['nick'].") successfully!";
-			$_SESSION['id'] = $rows['id'];
-			$_SESSION['uid'] = $rows['uid'];
-			$_SESSION['name'] = $rows['name'];
-			$_SESSION['nick'] = $rows['nick'];
-			$_SESSION['power'] = $rows['power'];
-			$_SESSION['color'] = $rows['color'];
-			$_SESSION['keyc'] = $rows['keyc'];
-			$_SESSION['logged'] = TRUE;
-			$valid = TRUE;
+if(isset($result)){
+	foreach ($result as $rows){
+		if($rows['secret'] == hash('sha256', $pwd)) {
+				$alert['type'] = "success";
+				$alert['msg'] = "Logged in as <strong>".$rows['name']." (".$rows['nick'].") successfully!";
+				$_SESSION['id'] = $rows['id'];
+				$_SESSION['uid'] = $rows['uid'];
+				$_SESSION['name'] = $rows['name'];
+				$_SESSION['nick'] = $rows['nick'];
+				$_SESSION['power'] = $rows['power'];
+				$_SESSION['color'] = $rows['color'];
+				$_SESSION['keyc'] = $rows['keyc'];
+				$_SESSION['logged'] = TRUE;
+				$valid = TRUE;
+		}
 	}
 }
 

@@ -144,9 +144,9 @@ if($page == 5) {
 		$exists = TRUE;	
 	}
 	if($exists === FALSE){
-		echo "Table space allocated and ready to be built. Test account 'admin' with password 'test' will be created.";
+		echo "Table space allocated and ready to be built. Test account 'admin' will be created with the following password...";
 	} else {
-		echo "Table already exists! To continue allocating required space, the current mmwp table will be deleted - including all stored data. Test account 'admin' with password 'test' will be created.";
+		echo "Table already exists! To continue allocating required space, the current mmwp table will be deleted - including all stored data. Test account 'admin' will be created with the following password...";
 	}	
 	echo "
 		<form action=\"#\" method=post style=\"text-align:center;\">
@@ -181,6 +181,7 @@ if($page == 6) {
 	 uid TEXT NOT NULL,
 	 nick TEXT NULL,
 	 secret TEXT NOT NULL,
+	 ip TEXT NOT NULL,
 	 power INT NOT NULL,
 	 title TEXT NULL,
 	 mail TEXT NULL,
@@ -193,7 +194,7 @@ if($page == 6) {
      PRIMARY KEY (id))";
 		$mysqli->query($sql);
 		$adminpwdh = hash('sha256', $adminpwd);
-		$sql = "INSERT INTO user (name, nick, uid, secret, power) VALUES ('admin', 'Test Admin', '1337', '".$adminpwdh."', 4)";
+		$sql = "INSERT INTO user (name, nick, uid, ip, secret, power, reg_date) VALUES ('admin', 'Test Admin', '1337', '".$_SERVER['REMOTE_ADDR']."', '".$adminpwdh."', 4, '".date('Y-m-d')."')";
 		$mysqli->query($sql);
 		/* Make sure we save the database connection info */
 		$settingsfile = fopen('config/settings.conf', 'w'); 
@@ -204,7 +205,7 @@ if($page == 6) {
 		fclose($settingsfile);
 		
 		
-	echo "<h1>Installation Complete</h1><p>Table successfully built. Test account 'admin' created. Settings configuration file created and populated. The website backend is setup. The only remaining thing to do is to configure the Mirau-bot! You should rename or delete this file as soon as possible for safety. Enjoy using MMWP!</p>";
+	echo "<h1>Installation Complete</h1><p>Table successfully built. Test account 'admin' created. Settings configuration file created and populated. The website backend is setup. The only remaining thing to do is to configure the bot by copying the '/config/settings.conf' file to the same directory as your 'RBot.php' so it can read the database (and setup the bot token if you have not yet done so also). You should rename or delete this file as soon as possible for safety. Enjoy using MMWP!</p>";
 }
 
 ?>
