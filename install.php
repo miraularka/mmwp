@@ -189,6 +189,7 @@ if($page == 6) {
 	 avatarb TEXT NULL,
 	 color INT NULL,
 	 reg_date DATE NOT NULL,
+	 rep INT NULL,
 	 keyc TEXT NULL,
 	 flair TEXT NULL,
      PRIMARY KEY (id))";

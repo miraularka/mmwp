@@ -23,6 +23,7 @@ if(isset($result)){
 				$_SESSION['power'] = $rows['power'];
 				$_SESSION['color'] = $rows['color'];
 				$_SESSION['keyc'] = $rows['keyc'];
+				$_SESSION['rep'] = $rows['rep'];
 				$_SESSION['logged'] = TRUE;
 				$valid = TRUE;
 		}

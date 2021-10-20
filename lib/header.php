@@ -33,7 +33,8 @@ if (isset($_SESSION['logged']) && $_SESSION['logged'] === TRUE) {
 		'nick' => $_SESSION['nick'],
 		'power' => $_SESSION['power'],
 		'color' => $_SESSION['color'],
-		'keyc' => $_SESSION['keyc']
+		'keyc' => $_SESSION['keyc'],
+		'rep' => $_SESSION['rep']
 	];
 	$page_title .= " (".$user['name'].")";
 }
@@ -70,8 +71,8 @@ if (isset($_SESSION['logged']) && $_SESSION['logged'] === TRUE) {
         		<div class="collapse navbar-collapse" id="navbarCollapse">
             			<div class="navbar-nav">
 							<?php 
-							if (isset($_SESSION['logged']) && $_SESSION['logged'] === TRUE) { echo "<a href=\"#\" class=\"nav-item nav-link\">Profile</a>";} ?>
-							<a href="#" class="nav-item nav-link">News</a>
+							if (isset($_SESSION['logged']) && $_SESSION['logged'] === TRUE) { echo "<a href=\"profile.php?user=".$user['id']."\" class=\"nav-item nav-link\">Profile</a>";} ?>
+							<a href="index.php" class="nav-item nav-link">News</a>
                 			<a href="#" class="nav-item nav-link">Servers</a>
                 			<a href="#" class="nav-item nav-link">Discord</a>
             			</div>
